@@ -5,12 +5,7 @@ let computerScore = 0;
 
 
 
-
-let human = getHumanChoice();
-
-let computer = getComputerChoice();
-
-console.log(playRound(human,computer));
+console.log(playGame(prompt("How many rounds do you want to play?")));
 
 function getComputerChoice(){
 
@@ -28,6 +23,28 @@ function getHumanChoice(){
     return promptResult;
 }
 
+function playGame(rounds){
+
+    for(let i = 0 ; i < rounds ; i++){
+
+    let human = getHumanChoice();
+
+    let computer = getComputerChoice();
+    
+    playRound(human,computer);
+    }
+
+    console.log(`Final scores for the player : ${humanScore} and the computer : ${computerScore}`)
+
+    if (computerScore==humanScore){
+        console.log("Draw!");
+    }
+    else if(computerScore > humanScore){
+        console.log("You lose!");
+    }
+    else console.log("You win!");
+}
+
 function playRound(human,computer){
 
     
@@ -38,17 +55,20 @@ function playRound(human,computer){
 
     if (human == "rock" && computer == "rock" || human == "paper" && computer == "paper" || human == "scissors" && computer == "scissors"){
 
-        return `A Draw! What a coincidence!`;
+        console.log(`A Draw! What a coincidence!`)
+        return ;
     } 
     else if (human == "rock" && computer == "scissors" || human == "paper" && computer == "rock" || human == "scissors" && computer == "paper"  ){
 
         humanScore++;
-        return `You win! ${human} beats ${computer}`;
+        console.log(`You win! ${human} beats ${computer}.`);
+        return ;
     }
-    else if (computer== "rock" && human == "scissors" || computer == "paper" && human == "rock" || computer == "scissors" && human == "paper"  ){
+    else if (computer == "rock" && human == "scissors" || computer == "paper" && human == "rock" || computer == "scissors" && human == "paper"  ){
 
         computerScore++;
-        return ` You lose! ${computer} beats ${human} `;
+        console.log(`You lose! ${computer} beats ${human}.`);
+        return ;
     }
  
 
