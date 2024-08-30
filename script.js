@@ -3,9 +3,25 @@
 let humanScore = 0;
 let computerScore = 0;
 
+let buttons = document.querySelectorAll("li");
 
+buttons.forEach(button => {
+    
+    button.addEventListener("click",()=>{
+    button.classList.add("clicked");
 
-console.log(playGame(prompt("How many rounds do you want to play?")));
+    }); 
+
+    button.addEventListener("transitionend",removeTransition);
+
+});
+
+function removeTransition(e){
+    if(e.propertyName != "transform") return;
+    this.classList.remove("clicked");
+}
+
+//console.log(playGame(prompt("How many rounds do you want to play?")));
 
 function getComputerChoice(){
 
