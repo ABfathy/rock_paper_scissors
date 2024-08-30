@@ -2,13 +2,19 @@
 
 let humanScore = 0;
 let computerScore = 0;
+let humanChoice;
 
-let buttons = document.querySelectorAll("li");
+
+const buttons = document.querySelectorAll(".human li");
+
+const values = document.querySelector(".values");
 
 buttons.forEach(button => {
     
     button.addEventListener("click",()=>{
     button.classList.add("clicked");
+    getHumanChoice(button.innerText);
+    playGame(humanChoice);
 
     }); 
 
@@ -21,7 +27,7 @@ function removeTransition(e){
     this.classList.remove("clicked");
 }
 
-//console.log(playGame(prompt("How many rounds do you want to play?")));
+
 
 function getComputerChoice(){
 
@@ -33,32 +39,34 @@ return choices[randChoice];
 
 }
 
-function getHumanChoice(){
-    let promptResult = prompt("Rock! Paper! Scissors! Choose!");
+function incrementScore(human , computer){
 
-    return promptResult;
+    humanScore += human;
+    computerScore += computer;
+    
 }
 
-function playGame(rounds){
+function getHumanChoice(choice){
+     humanChoice = choice;
 
-    for(let i = 0 ; i < rounds ; i++){
+     return choice;
+}
 
-    let human = getHumanChoice();
+
+    
+
+function playGame(humanChoice){
+
+   
 
     let computer = getComputerChoice();
+
     
-    playRound(human,computer);
-    }
+    playRound(humanChoice,computer);
 
-    console.log(`Final scores for the player : ${humanScore} and the computer : ${computerScore}`)
+    values.innerText = `${humanScore} - ${computerScore}`;
 
-    if (computerScore==humanScore){
-        console.log("Draw!");
-    }
-    else if(computerScore > humanScore){
-        console.log("You lose!");
-    }
-    else console.log("You win!");
+    
 }
 
 function playRound(human,computer){
@@ -71,25 +79,28 @@ function playRound(human,computer){
 
     if (human == "rock" && computer == "rock" || human == "paper" && computer == "paper" || human == "scissors" && computer == "scissors"){
 
+        incrementScore(0,0);
         console.log(`A Draw! What a coincidence!`)
-        return ;
+        return;
     } 
     else if (human == "rock" && computer == "scissors" || human == "paper" && computer == "rock" || human == "scissors" && computer == "paper"  ){
 
-        humanScore++;
+        incrementScore(1,0);
         console.log(`You win! ${human} beats ${computer}.`);
-        return ;
+        return;
     }
     else if (computer == "rock" && human == "scissors" || computer == "paper" && human == "rock" || computer == "scissors" && human == "paper"  ){
 
-        computerScore++;
+        incrementScore(0,1);
         console.log(`You lose! ${computer} beats ${human}.`);
-        return ;
+        return;
     }
  
 
 }
 
 
+
+   
 
 
