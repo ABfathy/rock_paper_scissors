@@ -15,7 +15,7 @@
     font-size: 30px;
     font-weight: bold;
     background-color: #2d545e;
-    color:#ffffff;
+    color:#e1b382;
     display: flex;
     width: 100%;
     justify-content: center;
@@ -32,6 +32,7 @@
     flex-direction: column;
     gap: 100px;
     background-color:  #e1b382;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     
 
 }
@@ -42,6 +43,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color:#12343b;
 }
 
 .choice {
@@ -62,6 +64,38 @@ ul {
     font-style: italic;
 }
 
+
+li {
+    padding: 10px;
+    border: solid 3px #2d545e;
+    border-radius: 20px;
+    transition: all 0.09s;
+    cursor: pointer;
+    
+}
+
+.clicked {
+
+    background-color: #c89666;
+    transform:scale(1.1);
+    box-shadow: 0 0 10px #2d545e;
+
+}
+
+
+.center {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 25px;
+
+}
+
 footer {
 
     display: flex;
@@ -70,4 +104,5 @@ footer {
     padding: 50px;
     font-size: 20px;
     font-weight: bold;
+    color:#2d545e;
 }
